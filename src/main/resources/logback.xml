@@ -1,0 +1,76 @@
+<configuration>
+    <jmxConfigurator/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%3L] [%thread] %highlight(%-5level) %logger{50}.%M\(%F:%L\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/myproject.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/myproject.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger.%M\(%F:%L\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ACCESS_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/access_log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/access_log.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <!--
+    <appender name="REMOTE" class="ch.qos.logback.classic.net.SocketAppender">
+        <remoteHost>127.0.0.1</remoteHost>
+        <port>6000</port>
+        <reconnectionDelay>10000</reconnectionDelay>
+        <includeCallerData>false</includeCallerData>
+    </appender>
+    -->
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+        <!--<appender-ref ref="REMOTE"/>-->
+    </root>
+
+    <!--<logger name="org.apache.ibatis" level="DEBUG"/>-->
+    <!--<logger name="org.mybatis" level="DEBUG"/>-->
+    <!--<logger name="com.mybatis" level="DEBUG"/>-->
+    <!--<logger name="java.sql" level="DEBUG"/>-->
+    <!--<logger name="javax.sql" level="DEBUG"/>-->
+
+    <!--<logger name="cn.huoqiu.base" level="INFO"/>-->
+    <!--<logger name="com.hq" level="DEBUG"/>-->
+    <!--<logger name="org.eclipse" level="INFO"/>-->
+    <!--<logger name="org.springframework" level="info"/>-->
+    <!--<logger name="org.hibernate.validator" level="INFO"/>-->
+    <!--<logger name="org.mybatis.spring" level="INFO"/>-->
+    <!--<logger name="java" level="INFO"/>-->
+
+    <!--<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="DEBUG"/>-->
+    <!--<logger name="org.springframework.jdbc.core.JdbcTemplate" level="DEBUG"/>-->
+    <!--<logger name="cn.huoqiu.base.db.SQLExecutor" level="DEBUG"/>-->
+    <!--<logger name="org.springframework.jdbc.core.StatementCreatorUtils" level="TRACE"/>-->
+    <!--<logger name="cn.huoqiu.post.HttpUtil" level="DEBUG"/>-->
+    <!--<logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor" level="DEBUG"/>-->
+
+    <logger name="log.AccessLog" level="INFO" additivity="false">
+        <appender-ref ref="ACCESS_LOG"/>
+        <!--<appender-ref ref="REMOTE"/>-->
+    </logger>
+
+    <logger name="org.eclipse" level="ERROR"/>
+
+</configuration>
