@@ -1,11 +1,11 @@
 package top.winkin.util;
 
-import org.apache.commons.io.Charsets;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -60,11 +60,11 @@ public class ConfigPropertiesUtil {
     }
 
     public static String getValue(String key, String defaultValue) {
-        return getValue(key, defaultValue, Charsets.UTF_8);
+        return getValue(key, defaultValue, StandardCharsets.UTF_8);
     }
 
     public static String getValue(String key, String defaultValue, Charset convertCharset) {
-        return getValue(key, defaultValue, Charsets.ISO_8859_1, convertCharset);
+        return getValue(key, defaultValue, StandardCharsets.ISO_8859_1, convertCharset);
     }
 
     public static String getValue(String key, String defaultValue, Charset originCharset, Charset convertCharset) {
