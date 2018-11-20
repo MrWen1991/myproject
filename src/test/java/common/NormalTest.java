@@ -3,7 +3,7 @@ package common;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.ConfigPropertiesUtil;
+import top.winkin.util.ConfigPropertiesUtil;
 
 /**
  * @Description:
@@ -18,5 +18,7 @@ public class NormalTest {
         String value = ConfigPropertiesUtil.getValue("site.url");
 //        System.out.println("value ="+value);
         log.info("value={}",value);
+        long l = 0X12;
+
     }
 }
